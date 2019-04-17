@@ -19,3 +19,9 @@
 
 /target
 */target
+
+### IDEA MAVEN ###
+
+*/mvnw.cmd
+*/mvnw
+/*/.mvn/
