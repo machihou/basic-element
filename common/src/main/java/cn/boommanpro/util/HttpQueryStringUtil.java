@@ -22,7 +22,7 @@ public class HttpQueryStringUtil {
                 e.printStackTrace();
             }
             if (field.getAnnotation(HttpQueryString.class) != null) {
-                if (StringUtil.isNotEmpty(field.getAnnotation(HttpQueryString.class).name()) && field.getAnnotation(HttpQueryString.class).require()) {
+                if (StringUtils.isNotEmpty(field.getAnnotation(HttpQueryString.class).name()) && field.getAnnotation(HttpQueryString.class).require()) {
                     stringBuilder.append(field.getAnnotation(HttpQueryString.class).name()).append("=").append(getBeanValue(o)).append("&");
                 }
             } else if (o != null) {
