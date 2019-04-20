@@ -2,7 +2,9 @@ package cn.boommanpro.basic.h2.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * @author BoomMan
@@ -55,5 +57,5 @@ public class RowPermission {
     /**
      * 所有用户都可查询
      */
-    private Boolean all;
+    private Boolean allOwner;
 }

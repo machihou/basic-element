@@ -1,8 +1,12 @@
 package cn.boommanpro.basic.h2.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * @author BoomMan
@@ -11,6 +15,8 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class RowResource {
     @Id
     @GeneratedValue

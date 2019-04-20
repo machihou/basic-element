@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    ## 开启jpa显示sql
+    show-sql: true
+    ## 配置通过hibernate 反向生成表结构
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: root
+    password: 123456
+debug: true

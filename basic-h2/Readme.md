@@ -1,5 +1,7 @@
 # H2
 
+错误1.是用到了mysql的关键字 在直接执行会报错
+
 H2官网: http://www.h2database.com/
 
 安装教程: https://www.cnblogs.com/xdp-gacl/p/4171024.html
