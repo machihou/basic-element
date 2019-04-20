@@ -15,8 +15,8 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>basic-h2</module>
-        <module>basic-junit4</module>
+        <module>h2</module>
+        <module>junit4</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

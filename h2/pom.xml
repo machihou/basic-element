@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>basic-h2</artifactId>
+    <artifactId>h2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>basic-h2</name>
+    <name>h2</name>
     <description>Demo project for Spring Boot</description>
 
 
