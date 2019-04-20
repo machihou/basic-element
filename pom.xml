@@ -17,6 +17,7 @@
     <modules>
         <module>h2</module>
         <module>junit4</module>
+        <module>web</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
