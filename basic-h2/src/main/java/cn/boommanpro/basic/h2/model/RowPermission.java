@@ -11,13 +11,12 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "row_permission")
 public class RowPermission {
     /**
      * 主键Id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
     private Integer resourceId;

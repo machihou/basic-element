@@ -11,10 +11,9 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "row_resource")
 public class RowResource {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue
     private Integer id;
     /**
      * 系统Id

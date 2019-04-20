@@ -11,3 +11,7 @@ http://127.0.0.1:8082/
 
 
 http://dbcopyplugin.sourceforge.net/index.php?page=screenshots
+
+
+
+jdbc:h2:mem:h2-test;MODE=MYSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;IFEXISTS=false
