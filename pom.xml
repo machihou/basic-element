@@ -21,6 +21,7 @@
         <module>web-flux</module>
         <module>common</module>
         <module>netty-websocket</module>
+        <module>wechat</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
