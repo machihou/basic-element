@@ -1,19 +1,25 @@
 package cn.boommanpro.web.controller.form;
 
+import cn.boommanpro.web.controller.validate.Insert;
+import cn.boommanpro.web.controller.validate.Update;
 import cn.boommanpro.web.validate.ValidateMobile;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Data
 public class ComplexForm {
-    @NotBlank(message = "用户名不能为空")
-    @Length(min = 5, max = 20, message = "用户名长度应在5-20字符之间")
+    @NotBlank(groups = Insert.class,message = "insert操作用户名不能为空")
+    @Length(groups = Insert.class,min = 5, max = 20, message = "insert插入操作用户名长度应在5-20字符之间")
+
+    @NotBlank(groups = Update.class,message = "update操作用户名不能为空")
+    @Length(groups = Update.class,min = 5, max = 20, message = "update插入操作用户名长度应在5-20字符之间")
+
+    @NotBlank(message = "base操作用户名不能为空")
+    @Length(min = 5, max = 20, message = "base操作用户名长度应在5-20字符之间")
     private String userName;
+
     @NotBlank(message = "密码不能为空")
     @Length(min = 5, max = 20, message = "密吗长度应在5-20字符之间")
     private String password;
@@ -25,4 +31,7 @@ public class ComplexForm {
 
     @ValidateMobile
     private String mobile;
+
+    @Email
+    private String mail;
 }

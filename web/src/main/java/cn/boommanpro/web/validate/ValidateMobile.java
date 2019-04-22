@@ -9,10 +9,13 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target({TYPE, METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })// 约束注解应用的目标元素类型(TYPE   ,METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER等)
-@Retention(RUNTIME)// 约束注解应用的时机
+// 约束注解应用的目标元素类型(TYPE   ,METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER等)
+@Target({TYPE, METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
+// 约束注解应用的时机
+@Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = { MobileValidator.class})// 与约束注解关联的验证器
+// 与约束注解关联的验证器
+@Constraint(validatedBy = { MobileValidator.class})
 public @interface ValidateMobile {
 
     //是否校验
