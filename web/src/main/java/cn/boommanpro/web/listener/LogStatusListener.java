@@ -18,6 +18,6 @@ public class LogStatusListener implements HttpSessionListener {
 
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
-
+        log.info("会话清除");
     }
 }

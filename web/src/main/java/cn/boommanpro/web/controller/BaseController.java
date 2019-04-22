@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpSession;
 
 @Validated
 @RestController
@@ -23,5 +23,10 @@ public class BaseController {
     @GetMapping("complexQuery")
     public CallResult complexQuery(@Validated ComplexForm complexForm){
         return CallResult.success(complexForm);
+    }
+
+    @GetMapping("login")
+    public CallResult login(HttpSession httpSession) {
+        return CallResult.success();
     }
 }

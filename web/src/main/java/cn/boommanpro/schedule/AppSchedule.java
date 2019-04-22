@@ -11,11 +11,16 @@ import java.time.LocalDateTime;
  *
  * @author BoomMan
  */
+
+/**
+ * 在线 cron表达式生成: http://cron.qqe2.com/
+ *
+ * 但是业务有一些bug
+ */
 @Component
 @Log4j2
 public class AppSchedule {
 
-    
     /**
      * 每周一 凌晨 清空排行榜
      */

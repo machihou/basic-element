@@ -13,3 +13,8 @@
 
 
 
+
+## Validator使用教程
+
+Spring https://docs.spring.io/spring/docs/5.2.0.M1/spring-framework-reference/core.html#validation-beanvalidation-overview
+
