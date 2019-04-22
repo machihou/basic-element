@@ -31,40 +31,34 @@ import java.util.Set;
 @Slf4j
 @RestControllerAdvice
 public class GlobalDefaultExceptionHandler {
-    @ExceptionHandler( BindException.class )
+    @ExceptionHandler(BindException.class)
     public CallResult handleResourceNotFoundException(BindException e) {
         //捕获的所有错误对象
-        log.error("BindException",e);
-        List<ObjectError> allErrors = e.getAllErrors();
-        Map<String, String> errorMap = new HashMap<>(allErrors.size());
-        for (ObjectError allError : allErrors) {
-            errorMap.put(((FieldError) allError).getField(), allError.getDefaultMessage());
-        }
-        return CallResult.error("参数验证错误",errorMap);
+        log.error("BindException", e);
+        return CallResult.error("参数验证错误", from2Message(e.getAllErrors()));
     }
 
 
-
-    @ExceptionHandler( HttpRequestMethodNotSupportedException.class )
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     public CallResult handleHttpRequestMethodNotSupportedException(HttpServletRequest request, HttpRequestMethodNotSupportedException e) {
         //捕获的所有错误对象
-        log.error("访问的Url地址为:{},请求的方式为:{}",request.getRequestURL(),e.getMethod());
-        return CallResult.error("请求方式"+e.getMethod()+"不支持");
+        log.error("访问的Url地址为:{},请求的方式为:{}", request.getRequestURL(), e.getMethod());
+        return CallResult.error("请求方式" + e.getMethod() + "不支持");
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public CallResult httpMessageNotReadableException(HttpServletRequest request, HttpMessageNotReadableException e) {
         //捕获的所有错误对象
-        log.error("httpMessageNotReadableException:",e);
+        log.error("httpMessageNotReadableException:", e);
         return CallResult.error("请求类型异常 Required request body is missing");
     }
 
-    @ExceptionHandler( ConstraintViolationException.class )
+    @ExceptionHandler(ConstraintViolationException.class)
     public CallResult handleConstraintViolationException(ConstraintViolationException e) {
         Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
         StringBuilder result = new StringBuilder();
         for (ConstraintViolation<?> constraintViolation : constraintViolations) {
-            result.append(constraintViolation.getMessage()+";");
+            result.append(constraintViolation.getMessage() + ";");
         }
         return CallResult.error(result.toString());
     }
@@ -76,29 +70,30 @@ public class GlobalDefaultExceptionHandler {
 
 
     @ExceptionHandler(MyException.class)
-    public CallResult myException(MyException e) {
-        MyException myException = (MyException)e;
-        log.error("出现自定义异常:{}",myException.getMessage());
+    public CallResult myException(MyException myException) {
+        log.error("出现自定义异常:{}", myException.getMessage());
         return CallResult.error(myException.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public <T> CallResult<?> methodArgumentNotValidHandler(HttpServletRequest request, MethodArgumentNotValidException e) {
-        log.error("MethodArgumentNotValidException异常:",e);
+        log.error("MethodArgumentNotValidException异常:", e);
         BindingResult bindingResult = e.getBindingResult();
-
-        List<ObjectError> allErrors = bindingResult.getAllErrors();Map<String, String> errorMap = new HashMap<>(allErrors.size());
-
-        for (ObjectError allError : allErrors) {
-            errorMap.put(((FieldError) allError).getField(), allError.getDefaultMessage());
-        }
-        return CallResult.error("参数验证错误",errorMap);
+        return CallResult.error("参数验证错误", from2Message(bindingResult.getAllErrors()));
     }
 
     @ExceptionHandler(Exception.class)
     public <T> CallResult<?> defaultExceptionHandler(HttpServletRequest request, Exception e) {
-        log.error("出现未知异常:",e);
+        log.error("出现未知异常:", e);
         //未知错误  提示默认异常
         return CallResult.error("服务器异常");
+    }
+
+    private Map<String, String> from2Message(List<ObjectError> allErrors) {
+        Map<String, String> errorMap = new HashMap<>(allErrors.size());
+        for (ObjectError allError : allErrors) {
+            errorMap.put(((FieldError) allError).getField(), allError.getDefaultMessage());
+        }
+        return errorMap;
     }
 }
