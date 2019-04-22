@@ -22,6 +22,7 @@
         <module>common</module>
         <module>netty-websocket</module>
         <module>wechat</module>
+        <module>crawler-fruit</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
