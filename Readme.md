@@ -13,7 +13,13 @@
 
 ### Web
 
+1.@EnableAsync
 
+3.@EnableCaching  自定义Spring Cache
+
+4.@EnableRedisHttpSession
+
+log4j2
 
 7.@WebFilter
 
@@ -21,7 +27,7 @@
 9.Listener
 
 10.ThreadLocal  Session相关
-
+11.限制登录实现
 13. @Scheduled  ScheduledTask
 
 14.Swagger
@@ -33,13 +39,9 @@
 ## 待集成框架
 
 
-1.@EnableAsync
-
 2.@EnableKafka
 
-3.@EnableCaching  自定义Spring Cache
 
-4.@EnableRedisHttpSession
 
 5.Lombok使用示例
 
@@ -50,7 +52,6 @@
 
 
 
-11.限制登录实现
 
 
 
@@ -80,7 +81,7 @@
 
 27.BBoss框架 ElasticSearch
 
-28.log4j2 和 logback配置
+28. logback配置
 
 29.Thymeleaf常用语法
 

@@ -18,3 +18,17 @@
 
 Spring https://docs.spring.io/spring/docs/5.2.0.M1/spring-framework-reference/core.html#validation-beanvalidation-overview
 
+
+## 待加入系列
+
+Swagger
+
+Spring Session
+
+限制登录实现
+
+配置log4j2
+
+EnableAsync
+
+Spring Cache
