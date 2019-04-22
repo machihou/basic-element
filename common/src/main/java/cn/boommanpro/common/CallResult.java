@@ -44,4 +44,9 @@ public class CallResult<T> implements Serializable {
         return new CallResult<>(ERROR_CODE, message,null);
     }
 
+
+    public static<T>  CallResult<T>  error(String message,T result){
+        return new CallResult<>(ERROR_CODE, message,result);
+    }
+
 }

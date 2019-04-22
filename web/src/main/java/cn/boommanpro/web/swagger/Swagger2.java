@@ -33,7 +33,7 @@ public class Swagger2 {
                 .title("Spring 整合 Swagger")
                 .description("更多相关文章请关注：https://blog.csdn.net/boom_man/")
                 .termsOfServiceUrl("https://blog.csdn.net/boom_man/")
-                .contact("BoomMan")
+//                .contact("BoomMan")
                 .version("1.0")
                 .build();
     }

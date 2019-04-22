@@ -18,7 +18,7 @@ public @interface ValidateMobile {
     //是否校验
     boolean required() default true;
     // 约束注解验证时的输出消息
-    String message() default "手机号码错误";
+    String message() default "手机号码格式不正确";
     // 约束注解在验证时所属的组别
     Class<?>[] groups() default { };
     // 约束注解的有效负载

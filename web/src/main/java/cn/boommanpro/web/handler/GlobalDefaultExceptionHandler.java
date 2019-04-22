@@ -6,6 +6,7 @@ import cn.boommanpro.web.exception.MyException;
 import cn.boommanpro.web.exception.NotLoginException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -28,14 +31,13 @@ public class GlobalDefaultExceptionHandler {
     @ExceptionHandler( BindException.class )
     public CallResult handleResourceNotFoundException(BindException e) {
         //捕获的所有错误对象
-        e.printStackTrace();
+        log.error("BindException",e);
         List<ObjectError> allErrors = e.getAllErrors();
-        ObjectError error = allErrors.get(0);
-        //异常内容
-        String defaultMessage = error.getDefaultMessage();
-        //打印日志
-        log.error("error:",allErrors);
-        return CallResult.error(defaultMessage);
+        Map<String, String> errorMap = new HashMap<>(allErrors.size());
+        for (ObjectError allError : allErrors) {
+            errorMap.put(((FieldError) allError).getField(), allError.getDefaultMessage());
+        }
+        return CallResult.error("参数验证错误",errorMap);
     }
 
 
