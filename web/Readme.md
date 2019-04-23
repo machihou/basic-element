@@ -37,7 +37,13 @@ Spring Cache
 Spring Cache:https://docs.spring.io/spring-boot/docs/2.1.0.RELEASE/reference/htmlsingle/#boot-features-caching
 
 
-spring boot 二级缓存实现
+
+
+
+spring boot 二级缓存实现 和 多缓存来源问题
+
+
+
 
 
 ## 配置log4j2注意
@@ -48,5 +54,15 @@ spring boot 二级缓存实现
 
 然后配置log4j2.xml即可
 
+
+## Spring Cache
+
+共计 3个缓存
+
+1.缓存 
+
+一级缓存
+
+二级缓存
 
 

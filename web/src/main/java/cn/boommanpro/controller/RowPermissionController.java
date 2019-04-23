@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("rowPermission")
 public class RowPermissionController {
@@ -14,7 +16,8 @@ public class RowPermissionController {
     private RowPermissionService rowPermissionService;
 
     @GetMapping("listAll")
-    public CallResult listAll() {
+    public CallResult listAll(HttpServletRequest request) {
+
         return CallResult.success(rowPermissionService.listAll());
     }
 }
