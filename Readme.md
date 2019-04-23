@@ -97,3 +97,35 @@ log4j2
 
 如果有自己的想要集成的可以 pr or  issue
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Data Jpa Test 注解 内存数据库
+
+Mockito dao层隐藏
+

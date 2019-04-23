@@ -1,8 +1,8 @@
-package cn.boommanpro.web.controller;
+package cn.boommanpro.controller;
 
 import cn.boommanpro.common.CallResult;
-import cn.boommanpro.web.controller.form.NestForm;
-import cn.boommanpro.web.controller.validate.Nest;
+import cn.boommanpro.controller.form.NestForm;
+import cn.boommanpro.controller.validate.Nest;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;

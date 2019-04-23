@@ -2,3 +2,14 @@ spring:
   http:
     encoding:
       force: true
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/basic-element?useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cache:
+    type: simple
+logging:
+  config: classpath:log4j2.xml
+
+debug: true

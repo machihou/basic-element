@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.boommanpro.dao.RowResourceMapper">
+  <resultMap id="BaseResultMap" type="cn.boommanpro.model.RowResource">
+    <!--@mbg.generated generated on Tue Apr 23 16:17:09 CST 2019.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sys_code" jdbcType="INTEGER" property="sysCode" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="update_check" jdbcType="BIT" property="updateCheck" />
+    <result column="delete_check" jdbcType="BIT" property="deleteCheck" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Apr 23 16:17:09 CST 2019.-->
+    id, sys_code, full_name, `name`, update_check, delete_check
+  </sql>
+</mapper>

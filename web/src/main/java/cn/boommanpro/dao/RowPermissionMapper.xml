@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.boommanpro.dao.RowPermissionMapper">
+  <resultMap id="BaseResultMap" type="cn.boommanpro.model.RowPermission">
+    <!--@mbg.generated generated on Tue Apr 23 16:16:58 CST 2019.-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="resource_id" jdbcType="INTEGER" property="resourceId" />
+    <result column="sys_code" jdbcType="INTEGER" property="sysCode" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="creator" jdbcType="BIT" property="creator" />
+    <result column="department" jdbcType="BIT" property="department" />
+    <result column="sub_department" jdbcType="BIT" property="subDepartment" />
+    <result column="supervisor" jdbcType="BIT" property="supervisor" />
+    <result column="all_owner" jdbcType="BIT" property="allOwner" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Tue Apr 23 16:16:58 CST 2019.-->
+    id, resource_id, sys_code, role_name, `type`, `status`, creator, department, sub_department, 
+    supervisor, all_owner
+  </sql>
+</mapper>

@@ -1,7 +1,7 @@
-package cn.boommanpro.web.controller;
+package cn.boommanpro.controller;
 
 import cn.boommanpro.common.CallResult;
-import cn.boommanpro.web.controller.form.ComplexForm;
+import cn.boommanpro.controller.form.ComplexForm;
 import cn.boommanpro.web.validate.ValidateMobile;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;

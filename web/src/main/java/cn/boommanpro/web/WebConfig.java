@@ -21,6 +21,11 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private BaseInterceptor baseInterceptor;
 
+    @Bean
+    public BaseInterceptor baseInterceptor(){
+        return new BaseInterceptor();
+    }
+
 
 
     @Override

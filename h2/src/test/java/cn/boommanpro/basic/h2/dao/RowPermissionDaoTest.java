@@ -5,11 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@DataJpaTest
 public class RowPermissionDaoTest {
 
     @Autowired
@@ -23,7 +27,7 @@ public class RowPermissionDaoTest {
         rowResourceDao.save(new RowResource(4,1000,"cn.boommanpro.basic.h2.model.RowResource3","rowResource",Boolean.TRUE,Boolean.TRUE));
 
         RowResource rowResource = rowResourceDao.findByFullName("cn.boommanpro.basic.h2.model.RowResource");
-        log.info("id为1的rowResource:{}",rowResource);
+        assertThat(rowResource.getId()).isEqualTo(1);
     }
 
 }

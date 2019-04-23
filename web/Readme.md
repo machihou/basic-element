@@ -27,8 +27,26 @@ Spring Session
 
 限制登录实现
 
-配置log4j2
 
 EnableAsync
 
+
+
 Spring Cache
+
+Spring Cache:https://docs.spring.io/spring-boot/docs/2.1.0.RELEASE/reference/htmlsingle/#boot-features-caching
+
+
+spring boot 二级缓存实现
+
+
+## 配置log4j2注意
+
+移除maven中其他日志框架impl依赖  原理日志框架体系中的门面模式
+
+然后引入log4j2 starter
+
+然后配置log4j2.xml即可
+
+
+

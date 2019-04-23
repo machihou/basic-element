@@ -1,7 +1,7 @@
-package cn.boommanpro.web.controller.form;
+package cn.boommanpro.controller.form;
 
-import cn.boommanpro.web.controller.validate.Insert;
-import cn.boommanpro.web.controller.validate.Update;
+import cn.boommanpro.controller.validate.Insert;
+import cn.boommanpro.controller.validate.Update;
 import cn.boommanpro.web.validate.ValidateMobile;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;

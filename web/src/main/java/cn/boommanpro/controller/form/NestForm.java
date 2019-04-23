@@ -1,6 +1,6 @@
-package cn.boommanpro.web.controller.form;
+package cn.boommanpro.controller.form;
 
-import cn.boommanpro.web.controller.validate.Nest;
+import cn.boommanpro.controller.validate.Nest;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 

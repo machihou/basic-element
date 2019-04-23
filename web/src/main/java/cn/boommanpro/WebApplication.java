@@ -2,7 +2,9 @@ package cn.boommanpro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -10,6 +12,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 @EnableScheduling
+@EnableCaching
 @SpringBootApplication
 public class WebApplication {
     public static void main(String[] args) {
