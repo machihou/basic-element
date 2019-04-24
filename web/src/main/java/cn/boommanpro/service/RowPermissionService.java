@@ -14,7 +14,7 @@ public class RowPermissionService {
     @Autowired
     private RowPermissionMapper rowPermissionMapper;
 
-    @Cacheable(cacheNames = CacheManagerConfig.EhCacheNames.CACHE_15MINS,cacheManager = "caffeineCacheManager")
+    @Cacheable(cacheNames = CacheManagerConfig.EhCacheNames.CACHE_15MINS,cacheManager = "redisCacheManager")
     public List<RowPermission> listAll(){
         return rowPermissionMapper.selectList(null);
     }

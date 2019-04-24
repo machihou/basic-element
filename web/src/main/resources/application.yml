@@ -7,9 +7,34 @@ spring:
     password: 123456
     url: jdbc:mysql://127.0.0.1:3306/basic-element?useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=GMT%2B8
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis-starter的配置
   cache:
     type: caffeine
+    cache-names: cache1,cache2,cache3
+  redis:
+    timeout: 10000
+
+
 logging:
   config: classpath:log4j2.xml
 
 debug: true
+
+
+
+
+
+#自定义配置。expire统一单位为毫秒
+cache:
+  multi:
+    cacheNames: cache1,cache2,cache3
+    ehcache:
+      expireAfterWrite: 5000
+      maxEntry: 1000
+    redis:
+      defaultExpiration: 60000
+      expires:
+        cache1: 50000
+        cache2: 70000
+        cache3: 70000
+    use2L: true #开启二级缓存
