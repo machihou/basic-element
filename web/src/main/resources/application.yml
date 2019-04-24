@@ -37,4 +37,6 @@ cache:
         cache1: 50000
         cache2: 70000
         cache3: 70000
-    use2L: true #开启二级缓存
+    #开启二级缓存
+    use2L: true
+

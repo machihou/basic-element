@@ -5,8 +5,10 @@ import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.core.RedisTemplate;
 
+
 /**
  * 监听redis消息需要实现MessageListener接口
+ * 利用本监听器来实现多redis同步缓存
  */
 @Slf4j
 public class CacheMessageListener implements MessageListener {

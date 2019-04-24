@@ -14,6 +14,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * RedisEhcacheCache配置
+ */
 @Slf4j
 public class RedisEhcacheCache extends AbstractValueAdaptingCache {
 
