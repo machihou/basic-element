@@ -12,7 +12,7 @@ import java.util.Map;
  * @author 59232
  */
 @Data
-@ConfigurationProperties(prefix = "multi.cache.redis")
+@ConfigurationProperties(prefix = "custom.cache.redis")
 public class RedisCustomCacheProperties {
 
     /**

@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties(prefix = "multi.cache.caffeine")
+@ConfigurationProperties(prefix = "custom.cache.caffeine")
 public class CaffeineCustomCacheProperties {
     private String specification;
 }
