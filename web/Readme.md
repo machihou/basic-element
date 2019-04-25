@@ -66,3 +66,42 @@ spring boot 二级缓存实现 和 多缓存来源问题
 二级缓存
 
 
+
+
+# CaffeineCache
+
+org.springframework.boot.autoconfigure.cache.CaffeineCacheConfiguration
+
+
+# 一二级缓存
+
+一级缓存使用
+
+EhcacheCache缓存
+
+二级缓存使用
+
+Redis缓存
+
+
+
+
+
+
+
+
+
+
+
+# 缓存学习
+
+
+1.Redis
+
+过期时间
+
+过期通知
+
+cache配置
+
+

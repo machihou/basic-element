@@ -15,6 +15,8 @@ spring:
     timeout: 10000
 
 
+
+
 logging:
   config: classpath:log4j2.xml
 
@@ -40,3 +42,16 @@ cache:
     #开启二级缓存
     use2L: true
 
+custom:
+  cache:
+    redis:
+      cacheNames:
+        redisCache1:
+          timeToLive: 60000
+        redisCache2:
+          timeToLive: 60000
+      allowInFlightCacheCreation: false
+      defaultCacheConfig:
+        timeToLive: 60000
+        cacheNullValues: true
+        keyPrefix: 123

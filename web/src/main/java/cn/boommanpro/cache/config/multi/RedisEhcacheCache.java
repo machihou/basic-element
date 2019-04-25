@@ -1,4 +1,4 @@
-package cn.boommanpro.cache.custom;
+package cn.boommanpro.cache.config.multi;
 
 import cn.boommanpro.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;

@@ -6,9 +6,12 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @TableName(value = "row_permission")
-public class RowPermission {
+public class RowPermission implements Serializable {
+    private static final long serialVersionUID = 7363056553498068300L;
     /**
      * 主键 行级 permission_id
      */

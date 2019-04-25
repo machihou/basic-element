@@ -28,6 +28,9 @@
             <appender-ref ref="Console"/>
         </root>
 
+        <logger name="cn.boommanpro.dao" level="debug" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
 
 
     </Loggers>

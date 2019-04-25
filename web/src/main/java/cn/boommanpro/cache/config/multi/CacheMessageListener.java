@@ -1,4 +1,4 @@
-package cn.boommanpro.cache.custom;
+package cn.boommanpro.cache.config.multi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.connection.Message;
