@@ -12,7 +12,6 @@ import org.springframework.cache.annotation.EnableCaching;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -37,9 +36,12 @@ public class RowPermissionServiceTest {
         RowPermission rowPermission = new RowPermission();
         rowPermission.setId(1);
         rowPermission.setResourceId(1);
-        when(rowPermissionMapper.selectList(null)).thenReturn(new ArrayList<>());
+
+        List<RowPermission> permissionList = new ArrayList<>();
+        permissionList.add(rowPermission);
+        when(rowPermissionMapper.selectList(null)).thenReturn(permissionList);
         List<RowPermission> rowPermissions = rowPermissionService.listAll();
-        assertEquals(rowPermissions, rowPermissions);
+        assertEquals(rowPermissions.size(), permissionList.size());
         verify(rowPermissionMapper, times(1)).selectList(null);
     }
 

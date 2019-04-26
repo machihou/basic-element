@@ -2,28 +2,37 @@ package cn.boommanpro.dao;
 
 import cn.boommanpro.model.RowResource;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 /**
  * from: https://docs.spring.io/spring-boot/docs/2.1.0.RELEASE/reference/htmlsingle/#boot-features-testing-spring-boot-applications-testing-autoconfigured-jpa-test
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-@DataJpaTest
-@ActiveProfiles("fortest")
+@AutoConfigureTestDatabase
+@ActiveProfiles("test")
+@SpringBootTest
 public class RowResourceMapperTest {
 
 
     @Autowired
     private RowResourceMapper rowResourceMapper;
+
+    @Before
+    public void beforeSet(){
+
+    }
+
 
     @Test
     public void listAll() {
