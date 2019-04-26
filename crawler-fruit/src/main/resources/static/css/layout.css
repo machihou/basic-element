@@ -1,0 +1,13 @@
+.layout-crumb {
+    margin: 15px 0px 10px 0px;
+    box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 0px -1px;
+}
+
+.left-tree {
+    float: left;
+    width: 300px;
+}
+
+.right-div {
+    padding-left: 300px
+}

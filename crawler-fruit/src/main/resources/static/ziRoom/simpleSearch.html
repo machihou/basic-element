@@ -1,0 +1,178 @@
+<div id="userManagePage">
+
+
+    <div class="layout-crumb">
+        <Breadcrumb separator=">">
+            <Breadcrumb-Item to="#Home.html">
+                <icon type="ios-home-outline"></icon>
+                主页
+            </Breadcrumb-Item>
+            <Breadcrumb-Item>组织机构</Breadcrumb-Item>
+            <Breadcrumb-Item>用户管理</Breadcrumb-Item>
+        </Breadcrumb>
+    </div>
+
+
+    <i-Form :model="queryForm" label-position="left" :label-width="70">
+        <label>关键词:</label>
+        <i-Input v-model="queryForm.keywords" style="width: 200px"></i-Input>
+        <label>价格区间:</label>
+        <i-Input v-model="queryForm.price" style="width: 200px"></i-Input>
+        <label>地铁:</label>
+        <i-Select v-model="queryForm.subwayCode" filterable style="width:200px">
+            <i-Option v-for="item in subwayCodeWords" :value="item.value" :key="item.value">{{ item.value }}</i-Option>
+        </i-Select>
+        <label>包含词:</label>
+        <i-Select v-model="queryForm.contains" filterable style="width:200px">
+            <i-Option v-for="item in containsWords" :value="item.value" :key="item.value">{{ item.value }}</i-Option>
+        </i-Select>
+
+        <!--<i-Input v-model="queryForm.contains" style="width: 200px"></i-Input>-->
+        <i-Button type="primary" @click="search">搜索</i-Button>
+    </i-Form>
+
+
+    <i-Table :columns="ziRoomColumns" :data="ziRoomData"></i-Table>
+
+</div>
+<script>
+    new Vue({
+        el: '#userManagePage',
+        data: function () {
+            return {
+                searchUserModel: Object,
+                queryForm: {
+                    keywords: '',
+                    subwayCode: '13号线',
+                    contains: '3室1厅',
+                    price: '4500,7000',
+                },
+                ziRoomColumns: [
+                    {
+                        title: '序号',
+                        render: (h, params) => {
+                            return h('div', [
+                                h('span', {}, params.index + 1)]);
+                        }
+                    },
+                    {
+                        title: '名称',
+                        key: 'name',
+                        render: function (h, params) {
+                            return h('a', {
+                                attrs: {
+                                    target: '_blank',
+                                    href: 'http://m.ziroom.com/BJ/room?id=' + params.row.id
+                                }
+                            }, params.row.name);
+                        }
+                    },
+                    {
+                        title: '价格',
+                        key: 'price',
+                        render: (h, params) => {
+                            return h('div', [
+                                h('span', {}, params.row.price + " " + params.row.price_unit)]);
+
+                        }
+                    },
+                    {
+                        title: '小区',
+                        key: 'resblock_name'
+                    },
+                    {
+                        title: '图片',
+                        key: 'photo',
+                        render: function (h, params) {
+                            return h('img', {
+                                attrs: {
+                                    src: params.row.photo,
+                                    width: '200px',
+                                    height: '200px',
+
+                                }
+                            })
+                        }
+                    }
+                ],
+
+                ziRoomData: [],
+                containsWords: [
+                    {
+                        value: '',
+
+                    },
+                    {
+                        value: '2室1厅',
+
+                    },
+                    {
+                        value: '1室1厅',
+
+                    },
+                    {
+                        value: '3室1厅',
+
+                    },
+                    {
+                        value: '3室2厅',
+
+                    },
+                ],
+                subwayCodeWords: [
+                    {
+                        value: '',
+
+                    },
+                    {
+                        value: '13号线',
+
+                    },
+                    {
+                        value: '8号线',
+
+                    },
+                ],
+            };
+        },
+        methods: {
+
+
+            ajax: function () {
+                var _this = this;
+                $.get("/ziRoom/search", {}, function (res) {
+                    _this.init(res);
+                })
+
+            },
+            init: function (res) {
+                if (res.result) {
+                    this.ziRoomData = res.result;
+                    return;
+                }
+
+            },
+            search() {
+                var _this = this;
+
+                _this.$Spin.show();
+
+                $.get("/ziRoom/search", {
+                    price: _this.queryForm.price,
+                    keywords: _this.queryForm.keywords,
+                    subwayCode: _this.queryForm.subwayCode,
+                    contains: _this.queryForm.contains
+                }, function (res) {
+                    _this.init(res);
+
+
+                    _this.$Spin.hide();
+                });
+            },
+        },
+        mounted() {
+            // this.ajax();
+
+        },
+    });
+</script>

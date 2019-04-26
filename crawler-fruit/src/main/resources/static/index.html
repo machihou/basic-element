@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <title>BoomMan-Platform</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/iview.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+</head>
+<body style="height: 100%">
+
+
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/lib/vue.min.js"></script>
+<script src="js/lib/iview.min.js"></script>
+<script src="js/index.js"></script>
+
+
+<div id="app" class="app-main" style="height: 100%">
+
+
+    <div class="main" style="height: 100%">
+        <div class="sidebar-menu-con"
+             style=" overflow: auto;height: 100%;min-width:200px;border-right: 1px solid #dddee1;float: left;background: #495060">
+
+                <i-menu @on-select="select" theme="dark" accordion width="200px">
+<!--                    <Menu-Group :title="menuGroup.title" v-for="menuGroup in menuData">-->
+<!--                        <submenu :name="subMenu.menuNo" v-for="subMenu in menuGroup.children">-->
+<!--                            <template slot="title">-->
+<!--                                <icon :type="subMenu.icon"></icon>-->
+<!--                                {{subMenu.title}}-->
+<!--                            </template>-->
+<!--                            <menu-item :name="menuItem.resource" v-for="menuItem in subMenu.children">-->
+<!--                                {{menuItem.title}}-->
+<!--                            </menu-item>-->
+<!--                        </submenu>-->
+
+
+<!--                    </Menu-Group>-->
+
+
+
+                            <menu-item name="/ziRoom/simpleSearch.html">
+                                自如房间搜索
+                            </menu-item>
+                </i-menu>
+        </div>
+
+        <div class="main-header" style="height: 80px;background: #fff;box-shadow: 0 1px 1px 1px hsla(0,0%,39%,.1);position: relative;z-index: 11;">
+
+
+            <div class="user-dropdown-menu-con" style="    height: 80px;line-height: 80px">
+                <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
+                    <Dropdown transfer trigger="click">
+                        <a href="javascript:void(0)">
+                            <span class="main-user-name">BoomMan</span>
+                            <Icon type="arrow-down-b"></Icon>
+                        </a>
+                        <DropdownMenu slot="list">
+                            <Dropdown-Item name="loginout" divided>退出登录</Dropdown-Item>
+                        </DropdownMenu>
+                    </Dropdown>
+                    <Avatar icon="person" style="background: #619fe7;margin-left:10px;"></Avatar>
+                </Row>
+            </div>
+
+
+        </div>
+        <div id="single-page-con" style="padding-left: 210px;">
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+
+</html>
