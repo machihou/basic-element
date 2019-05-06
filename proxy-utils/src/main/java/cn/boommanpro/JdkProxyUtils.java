@@ -4,7 +4,6 @@ import org.springframework.aop.framework.AdvisedSupport;
 import org.springframework.aop.framework.AopProxy;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 
 public class JdkProxyUtils {
 

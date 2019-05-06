@@ -2,7 +2,6 @@ package cn.boommanpro.cache.config.multi;
 
 import cn.boommanpro.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
-
 import org.ehcache.Cache;
 import org.springframework.cache.support.AbstractValueAdaptingCache;
 import org.springframework.data.redis.core.RedisTemplate;

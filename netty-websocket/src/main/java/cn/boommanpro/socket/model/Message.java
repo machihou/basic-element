@@ -13,8 +13,4 @@ public class Message {
     private MessageType messageType;
     @Tag(2)
     private byte[] data;
-
-    public Message(MessageType messageType) {
-        this.messageType = messageType;
-    }
 }
