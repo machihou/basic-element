@@ -1,5 +1,6 @@
 package cn.boommanpro.test;
 
+import cn.boommanpro.ProxyUtilsApplication;
 import cn.boommanpro.service.CglibService;
 import cn.boommanpro.service.JdkService;
 import org.junit.Test;
@@ -9,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = ProxyUtilsApplication.class)
 public class CglibJdkTest {
     @Autowired
     private CglibService cglibService;
