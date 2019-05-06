@@ -4,8 +4,6 @@ import cn.boommanpro.cache.config.redis.RedisCustomCacheProperties;
 import cn.boommanpro.dao.ServiceSampleMapper;
 import cn.boommanpro.model.ServiceSample;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;

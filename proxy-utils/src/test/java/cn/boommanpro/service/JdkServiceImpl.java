@@ -1,8 +1,8 @@
 package cn.boommanpro.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class JdkServiceImpl implements JdkService {
     @Override
     public void test() {
