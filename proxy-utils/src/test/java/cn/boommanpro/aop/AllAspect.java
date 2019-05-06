@@ -1,5 +1,7 @@
 package cn.boommanpro.aop;
 
+import cn.boommanpro.JdkProxyUtils;
+import cn.boommanpro.ProxyUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -14,9 +16,12 @@ public class AllAspect {
     public void pointcut() {
     }
 
+
+
     @Around("pointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("进入aop");
+        Object target = ProxyUtils.getTarget(joinPoint.getThis());
+
         return joinPoint.proceed();
     }
 }

@@ -1,6 +1,5 @@
 package cn.boommanpro;
 
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.aop.framework.AdvisedSupport;
 import org.springframework.aop.framework.AopProxy;
 
@@ -11,11 +10,9 @@ public class JdkProxyUtils {
 
 
     /**
-     * 获取目标类 包装类的类型 Class.getName();
+     * 获取代理对象的interface信息
      */
-    public static Class getTargetClassInterfaces(ProceedingJoinPoint joinPoint) throws Exception {
-
-        Object proxy = joinPoint.getTarget();
+    public static  Class<?>[] getTargetClassInterfaces(Object proxy) throws Exception {
 
         Field h = proxy.getClass().getSuperclass().getDeclaredField("h");
         h.setAccessible(true);
@@ -25,11 +22,8 @@ public class JdkProxyUtils {
         advised.setAccessible(true);
 
         AdvisedSupport advisedSupport = (AdvisedSupport) advised.get(aopProxy);
+        return advisedSupport.getProxiedInterfaces();
 
-        Class<?>[] proxiedInterfaces = advisedSupport.getProxiedInterfaces();
-        ParameterizedType genericInterface = ((ParameterizedType) proxiedInterfaces[0].getGenericInterfaces()[0]);
-
-        return (Class) genericInterface.getActualTypeArguments()[0];
 
     }
 }

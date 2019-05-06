@@ -23,4 +23,12 @@ public class AspectJUtils {
         MethodSignature ms = (MethodSignature) joinPoint.getSignature();
         return ms.getMethod();
     }
+
+
+    /**
+     * getThis 是代理类对象
+     * getTarget 是原对象
+     */
+
+
 }
