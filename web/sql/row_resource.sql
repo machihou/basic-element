@@ -34,8 +34,8 @@ CREATE TABLE `row_resource`  (
 -- ----------------------------
 -- Records of row_resource
 -- ----------------------------
-INSERT INTO `row_resource` VALUES (1, 1000, 'com.mininglamp.inno.permission.demo.model.ServiceSample', '测试业务', 1, 1);
-INSERT INTO `row_resource` VALUES (2, 1000, 'com.mininglamp.inno.permission.demo.model.ServiceSampleTwo', '测试业务2', 1, 1);
-INSERT INTO `row_resource` VALUES (3, 1000, 'com.mininglamp.inno.permission.demo.model.ServiceSampleThree', '测试业务3', 1, 1);
+INSERT INTO `row_resource` VALUES (1, 1000, 'com.boommanpro.inno.permission.demo.model.ServiceSample', '测试业务', 1, 1);
+INSERT INTO `row_resource` VALUES (2, 1000, 'com.boommanpro.inno.permission.demo.model.ServiceSampleTwo', '测试业务2', 1, 1);
+INSERT INTO `row_resource` VALUES (3, 1000, 'com.boommanpro.inno.permission.demo.model.ServiceSampleThree', '测试业务3', 1, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
