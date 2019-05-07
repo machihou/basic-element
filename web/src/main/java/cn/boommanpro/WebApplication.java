@@ -18,7 +18,6 @@ import java.net.UnknownHostException;
 public class WebApplication {
 
 
-
     public static void main(String[] args) {
         ConfigurableApplicationContext context = new SpringApplication(WebApplication.class).run();
 
