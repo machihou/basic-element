@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECTNAME=sxu-room-search
+PROJECTNAME=[(${projectName})]
 
 pid=`ps -ef |grep $PROJECTNAME |grep -v "grep" |awk '{print $2}' `
 

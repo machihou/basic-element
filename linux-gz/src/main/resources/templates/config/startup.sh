@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECTNAME=sxu-room-search
+PROJECTNAME=[(${projectName})]
 
 pid=`ps -ef |grep $PROJECTNAME |grep -v "grep" |awk '{print $2}'`
 
@@ -12,6 +12,6 @@ else
 
    echo "Start success to start $PROJECTNAME ...."
 
-   nohup java -jar jar/sxu-room-search.jar  >> logs/catalina.out  2>&1 &
+   nohup java -jar jar/[(${projectName})].jar  >> logs/catalina.out  2>&1 &
 
 fi
