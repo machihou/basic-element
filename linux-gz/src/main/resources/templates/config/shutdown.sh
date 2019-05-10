@@ -9,7 +9,7 @@ if [ $pid ]; then
 
     kill -9 $pid
 
-    if [[ $? -eq 0 ]];then
+    if [(${LEFT_BRACKET})][(${LEFT_BRACKET})] $? -eq 0 [(${RIGHT_BRACKET})][(${RIGHT_BRACKET})];then
 
        echo "sucess to stop $PROJECTNAME "
 

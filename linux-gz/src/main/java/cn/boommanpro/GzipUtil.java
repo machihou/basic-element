@@ -1,15 +1,12 @@
 package cn.boommanpro;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.zip.GZIPOutputStream;
-
+import cn.boommanpro.generator.GeneratorFile;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
 import org.apache.commons.compress.utils.IOUtils;
+
+import java.io.*;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * @Title: GZIPUtil.java
@@ -29,7 +26,7 @@ public class GzipUtil {
      * @return File    返回打包后的文件
      * @throws
      */
-    public static File pack(File[] sources, File target){
+    public static File pack(File[] sources, File target,boolean executable){
         FileOutputStream out = null;
         try {
             out = new FileOutputStream(target);
@@ -40,10 +37,56 @@ public class GzipUtil {
         for (File file : sources) {
             try {
                 TarArchiveEntry tarArchiveEntry = new TarArchiveEntry(file);
-                // = (octal) 0100755
-                tarArchiveEntry.setMode(33261);
+                if (executable) {
+                    // = (octal) 0100755
+                    tarArchiveEntry.setMode(33261);
+                }
                 os.putArchiveEntry(tarArchiveEntry);
                 IOUtils.copy(new FileInputStream(file), os);
+                os.closeArchiveEntry();
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(os != null) {
+            try {
+                os.flush();
+                os.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return target;
+    }
+
+
+    public static File pack(GeneratorFile[] generatorFiles, File target){
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(target);
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        }
+        TarArchiveOutputStream os = new TarArchiveOutputStream(out);
+        for (GeneratorFile generatorFile : generatorFiles) {
+            try {
+                TarArchiveEntry tarArchiveEntry = new TarArchiveEntry(generatorFile.getFileName());
+
+
+                if (generatorFile.isExecutable()) {
+                    // = (octal) 0100755
+                    tarArchiveEntry.setMode(33261);
+                }
+                os.putArchiveEntry(tarArchiveEntry);
+                if (tarArchiveEntry.isFile()) {
+                    byte[] bytes = generatorFile.getContent().getBytes();
+                    tarArchiveEntry.setSize(bytes.length);
+                    IOUtils.copy(new ByteArrayInputStream(bytes), os);
+                }
                 os.closeArchiveEntry();
 
             } catch (FileNotFoundException e) {
@@ -117,7 +160,7 @@ public class GzipUtil {
 
         File[] sources = new File[] {new File("E:/startup.sh")};
         File target = new File("E:/release_package.tar");
-        compress(pack(sources, target));
+        compress(pack(sources, target,true));
     }
 }
 
