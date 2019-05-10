@@ -13,7 +13,10 @@ spring:
     cache-names: cache1,cache2,cache3
   redis:
     timeout: 10000
-
+  data:
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: 192.168.27.68:9300
 
 
 

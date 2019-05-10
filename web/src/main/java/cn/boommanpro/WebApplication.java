@@ -1,13 +1,16 @@
 package cn.boommanpro;
 
+import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import javax.annotation.PreDestroy;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -19,6 +22,8 @@ public class WebApplication {
 
 
     public static void main(String[] args) {
+
+
         ConfigurableApplicationContext context = new SpringApplication(WebApplication.class).run();
 
         try {
@@ -31,6 +36,14 @@ public class WebApplication {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
+
+
+    }
+
+
+    @Bean
+    public ExitCodeGenerator exitCodeGenerator() {
+        return () -> 42;
     }
 
 
