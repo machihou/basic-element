@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import javax.annotation.PreDestroy;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -22,8 +21,6 @@ public class WebApplication {
 
 
     public static void main(String[] args) {
-
-
         ConfigurableApplicationContext context = new SpringApplication(WebApplication.class).run();
 
         try {

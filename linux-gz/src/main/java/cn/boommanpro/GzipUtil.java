@@ -1,6 +1,8 @@
 package cn.boommanpro;
 
 import cn.boommanpro.generator.GeneratorFile;
+import cn.boommanpro.util.IOConvertUtil;
+import cn.boommanpro.util.StringUtils;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
 import org.apache.commons.compress.utils.IOUtils;
@@ -64,13 +66,10 @@ public class GzipUtil {
     }
 
 
-    public static File pack(GeneratorFile[] generatorFiles, File target){
-        FileOutputStream out = null;
-        try {
-            out = new FileOutputStream(target);
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        }
+    public static InputStream pack(GeneratorFile[] generatorFiles){
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+
         TarArchiveOutputStream os = new TarArchiveOutputStream(out);
         for (GeneratorFile generatorFile : generatorFiles) {
             try {
@@ -81,12 +80,16 @@ public class GzipUtil {
                     // = (octal) 0100755
                     tarArchiveEntry.setMode(33261);
                 }
-                os.putArchiveEntry(tarArchiveEntry);
-                if (tarArchiveEntry.isFile()) {
-                    byte[] bytes = generatorFile.getContent().getBytes();
+
+
+                byte[] bytes = new byte[]{};
+                if (StringUtils.notBlank(generatorFile.getContent())) {
+                    bytes = generatorFile.getContent().getBytes();
                     tarArchiveEntry.setSize(bytes.length);
-                    IOUtils.copy(new ByteArrayInputStream(bytes), os);
+
                 }
+                os.putArchiveEntry(tarArchiveEntry);
+                IOUtils.copy(new ByteArrayInputStream(bytes), os);
                 os.closeArchiveEntry();
 
             } catch (FileNotFoundException e) {
@@ -104,7 +107,7 @@ public class GzipUtil {
             }
         }
 
-        return target;
+        return IOConvertUtil.parse(out);
     }
 
     /**
@@ -154,6 +157,11 @@ public class GzipUtil {
         }
         return target;
     }
+
+
+
+
+
 
     public static void main(String[] args) {
         //tar -vxf release_package.tar

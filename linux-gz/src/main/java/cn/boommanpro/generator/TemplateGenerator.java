@@ -2,9 +2,12 @@ package cn.boommanpro.generator;
 
 import cn.boommanpro.GzipUtil;
 import cn.boommanpro.generator.config.ThymeLeafConfig;
+import cn.boommanpro.util.IOConvertUtil;
 import org.thymeleaf.context.Context;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class TemplateGenerator {
 
@@ -30,7 +33,7 @@ public class TemplateGenerator {
 
 
 
-    public static void generator(String projectName) {
+    public static InputStream generator(String projectName) throws Exception {
         GeneratorFile[] generatorFiles = new GeneratorFile[]{
                 GeneratorFile.of(JAR_FOLDER),
                 GeneratorFile.of(LOGS_FOLDER),
@@ -39,7 +42,7 @@ public class TemplateGenerator {
                 GeneratorFile.of(SHUTDOWN_FILE).setExecutable(true).setContent(doGenerator(projectName, SHUTDOWN_FILE)),
         };
 
-        GzipUtil.pack(generatorFiles, new File("E:/" + projectName + ".tar"));
+        return  GzipUtil.pack(generatorFiles);
 
 
     }
