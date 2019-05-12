@@ -40,7 +40,7 @@ public class Utils {
                     fis = new FileInputStream(file);
                     bis = new BufferedInputStream(fis);
                     int count;
-                    byte data[] = new byte[1024];
+                    byte[] data = new byte[1024];
                     while ((count = bis.read(data, 0, 1024)) != -1) {
                         taos.write(data, 0, count);
                     }
