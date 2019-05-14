@@ -1,0 +1,52 @@
+<properties>
+    <!--
+    1.根据planName查询每个计划的sign=0 feedback=0 的统计结果
+    -->
+    <property name="warningStat">
+        <![CDATA[{
+                   "query": {
+                     "terms": {
+                       "planName.keyword": [
+                         #foreach($planName in $planNameList)
+                             #if($velocityCount > 0),#end
+                                  "$planName"
+                         #end
+                       ]
+                     }
+                   },
+                   "aggs": {
+                     "group_by_name": {
+                       "terms": {
+                         "field": "planName.keyword"
+                       },
+                       "aggs": {
+                         "sign": {
+                           "filter": {
+                             "match": {
+                               "sign": "0"
+                             }
+                           }
+                         },
+                         "feedback": {
+                           "filter": {
+                             "match": {
+                               "feedbackDiscovery": 0
+                             }
+                           }
+                         },
+                         "startTime": {
+                           "filter": {
+                             "range": {
+                               "startTime": {
+                                 "gte": #[startTime]
+                               }
+                             }
+                           }
+                         }
+                       }
+                     }
+                   },
+                   "size": 0
+        }]]>
+    </property>
+</properties>

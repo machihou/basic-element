@@ -4,3 +4,7 @@ spring:
       elasticsearch:
         rest:
           host-names: www.boommanpro.cn:9200
+
+
+logging:
+  config: classpath:log4j2.xml

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--设置log4j2的自身log级别为warn -->
+<configuration status="warn">
+
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d][%t][%p][%l] %m%n"/>
+        </console>
+    </appenders>
+
+
+
+
+
+
+
+    <Loggers>
+
+        <root level="debug">
+            <appender-ref ref="Console"/>
+        </root>
+
+<!--        &lt;!&ndash; 将业务dao接口填写进去,并用控制台输出即可 &ndash;&gt;-->
+<!--        <logger name="org.apache.http" level="debug" additivity="false">-->
+<!--            <appender-ref ref="Console"/>-->
+<!--        </logger>-->
+<!--        <logger name="cn.boommanpro.dao" level="debug" additivity="false">-->
+<!--            <appender-ref ref="Console"/>-->
+<!--        </logger>-->
+<!--        <logger name="org.frameworkset.elasticsearch" level="debug" additivity="false">-->
+<!--            <appender-ref ref="Console"/>-->
+<!--        </logger>-->
+<!--        <logger name="org.springframework" level="info" additivity="false">-->
+<!--            <appender-ref ref="Console"/>-->
+<!--        </logger>-->
+<!--        <logger name="org.apache.http" level="debug" additivity="false">-->
+<!--            <appender-ref ref="Console"/>-->
+<!--        </logger>-->
+
+
+    </Loggers>
+
+
+</configuration>
