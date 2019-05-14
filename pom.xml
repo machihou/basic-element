@@ -31,6 +31,7 @@
         <module>proxy-utils</module>
         <module>linux-gz</module>
         <module>thinking-in-spring-boot</module>
+        <module>elasticsearch-bboss</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

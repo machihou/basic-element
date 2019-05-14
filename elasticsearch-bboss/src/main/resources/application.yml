@@ -1,0 +1,6 @@
+spring:
+  elasticsearch:
+    bboss:
+      elasticsearch:
+        rest:
+          host-names: www.boommanpro.cn:9200
