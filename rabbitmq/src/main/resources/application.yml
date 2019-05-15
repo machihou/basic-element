@@ -1,0 +1,9 @@
+#对于rabbitMQ的支持
+spring:
+  rabbitmq:
+    username: admin
+    password: admin
+    template:
+      retry:
+        enabled: true
+        initial-interval: 2s
