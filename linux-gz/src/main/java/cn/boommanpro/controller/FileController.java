@@ -1,7 +1,7 @@
 package cn.boommanpro.controller;
 
+import cn.boommanpro.StringUtils;
 import cn.boommanpro.generator.TemplateGenerator;
-import cn.boommanpro.util.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
