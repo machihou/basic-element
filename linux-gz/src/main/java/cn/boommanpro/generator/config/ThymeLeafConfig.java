@@ -1,7 +1,7 @@
 package cn.boommanpro.generator.config;
 
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.templateresolver.FileTemplateResolver;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 /**
  * @author BoomManPro
@@ -16,7 +16,7 @@ public enum ThymeLeafConfig {
     private TemplateEngine templateEngine;
 
      ThymeLeafConfig(){
-        FileTemplateResolver templateResolver = new FileTemplateResolver();
+         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setPrefix(getTemplatePath());
         templateResolver.setTemplateMode("TEXT");
         templateEngine = new TemplateEngine();
@@ -24,7 +24,7 @@ public enum ThymeLeafConfig {
     }
 
     private String getTemplatePath(){
-        return ThymeLeafConfig.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "templates/";
+        return "/templates/";
     }
 
     public static TemplateEngine getTemplateEngine(){

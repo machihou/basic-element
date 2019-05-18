@@ -2,12 +2,9 @@ package cn.boommanpro.generator;
 
 import cn.boommanpro.GzipUtil;
 import cn.boommanpro.generator.config.ThymeLeafConfig;
-import cn.boommanpro.util.IOConvertUtil;
 import org.thymeleaf.context.Context;
 
-import java.io.File;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 public class TemplateGenerator {
 
@@ -18,7 +15,6 @@ public class TemplateGenerator {
     private static final String SHUTDOWN_FILE = "shutdown.sh";
     private static final String LEFT_BRACKET = "[";
     private static final String RIGHT_BRACKET = "]";
-
 
     /**
      * 需要进行模板输出的是
@@ -54,7 +50,6 @@ public class TemplateGenerator {
 
     public static String doGenerator(String projectName, String fileName) {
         Context context = new Context();
-
         context.setVariable("projectName", projectName);
         context.setVariable("LEFT_BRACKET", LEFT_BRACKET);
         context.setVariable("RIGHT_BRACKET", RIGHT_BRACKET);
