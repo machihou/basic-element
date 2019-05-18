@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class Consumer {
-    @RabbitListener(queues = "someQueue")
+    @RabbitListener
     public void processMessage(String content) {
         log.error("消费收到到消息:{}",content);
     }
