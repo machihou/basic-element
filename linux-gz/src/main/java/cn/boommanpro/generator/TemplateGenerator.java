@@ -31,16 +31,19 @@ public class TemplateGenerator {
 
     public static InputStream generator(String projectName) throws Exception {
         GeneratorFile[] generatorFiles = new GeneratorFile[]{
-                GeneratorFile.of(JAR_FOLDER),
-                GeneratorFile.of(LOGS_FOLDER),
-                GeneratorFile.of(README_FILE).setContent(doGenerator(projectName, README_FILE)),
-                GeneratorFile.of(STARTUP_FILE).setExecutable(true).setContent(doGenerator(projectName, STARTUP_FILE)),
-                GeneratorFile.of(SHUTDOWN_FILE).setExecutable(true).setContent(doGenerator(projectName, SHUTDOWN_FILE)),
+                GeneratorFile.of(getPackagingName(projectName,JAR_FOLDER)),
+                GeneratorFile.of(getPackagingName(projectName,LOGS_FOLDER)),
+                GeneratorFile.of(getPackagingName(projectName,README_FILE)).setContent(doGenerator(projectName, README_FILE)),
+                GeneratorFile.of(getPackagingName(projectName,STARTUP_FILE)).setExecutable(true).setContent(doGenerator(projectName, STARTUP_FILE)),
+                GeneratorFile.of(getPackagingName(projectName,SHUTDOWN_FILE)).setExecutable(true).setContent(doGenerator(projectName, SHUTDOWN_FILE)),
         };
 
         return  GzipUtil.pack(generatorFiles);
 
+    }
 
+    private static String getPackagingName(String projectName,String fileName){
+        return projectName + "/" + fileName;
     }
 
 
