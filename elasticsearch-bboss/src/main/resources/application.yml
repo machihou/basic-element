@@ -3,7 +3,7 @@ spring:
     bboss:
       elasticsearch:
         rest:
-          host-names: www.boommanpro.cn:9200
+          host-names: localhost:9200
 
 
 logging:
