@@ -5,6 +5,7 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
@@ -15,6 +16,9 @@ import java.net.UnknownHostException;
  */
 @Component
 public class NettyWebSocketServer {
+
+    @Autowired
+    private NettyWebSocketServerInitializer nettyWebSocketServerInitializer;
 
     private static   Integer nettyWebSocketPort;
 
@@ -37,7 +41,7 @@ public class NettyWebSocketServer {
         server = new ServerBootstrap();
         server.group(mainGroup, subGroup)
                 .channel(NioServerSocketChannel.class)
-                .childHandler(new NettyWebSocketServerInitializer());
+                .childHandler(nettyWebSocketServerInitializer);
     }
 
     public void start() throws UnknownHostException {

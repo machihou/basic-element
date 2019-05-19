@@ -12,10 +12,16 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NettyWebSocketServerInitializer extends ChannelInitializer<SocketChannel> {
 
     public static final String WEB_SOCKET_PATH = "/";
+
+    @Autowired
+    private CoreHandler coreHandler;
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
@@ -55,7 +61,7 @@ public class NettyWebSocketServerInitializer extends ChannelInitializer<SocketCh
         // 自定义的handler
         pipeline.addLast(new ProtoBufDecoder(Message.class));
         pipeline.addLast(new ProtoBufEncoder());
-        pipeline.addLast(new CoreHandler());
+        pipeline.addLast(coreHandler);
     }
 
 }
