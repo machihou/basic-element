@@ -3,6 +3,7 @@ package cn.boommanpro.elasticsearch.bboss.dao;
 import cn.boommanpro.elasticsearch.bboss.dto.WarningStatDto;
 import cn.boommanpro.elasticsearch.bboss.model.Warnings;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class WarningsDaoTest {
             warnings.setSign(new Random().nextInt(3));
             warnings.setFeedbackDiscovery(new Random().nextInt(3));
             warnings.setStartTime(new Date().getTime()+"");
+            warnings.setSupervisor(Lists.newArrayList("boomman","boommanpro"));
             warningsDao.save(warnings);
         }
 

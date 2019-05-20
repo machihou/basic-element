@@ -5,6 +5,7 @@ import com.frameworkset.orm.annotation.ESId;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author wangqimeng
@@ -25,6 +26,11 @@ public class Warnings implements Serializable {
     private Integer sign;
 
     private Integer feedbackDiscovery;
+
+    /**
+     * 监督者 多值
+     */
+    private List<String> supervisor;
 
 
 }
