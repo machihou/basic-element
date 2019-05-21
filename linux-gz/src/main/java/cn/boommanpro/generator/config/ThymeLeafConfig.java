@@ -1,6 +1,7 @@
 package cn.boommanpro.generator.config;
 
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 /**
@@ -10,24 +11,22 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
  */
 public enum ThymeLeafConfig {
     /**
-     *
+     * Thymeleaf默认配置
      */
     INSTANCE;
     private TemplateEngine templateEngine;
 
-     ThymeLeafConfig(){
-         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
-        templateResolver.setPrefix(getTemplatePath());
-        templateResolver.setTemplateMode("TEXT");
+    private static final String DEFAULT_PREFIX = "/templates/";
+
+    ThymeLeafConfig() {
+        ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
+        templateResolver.setPrefix(DEFAULT_PREFIX);
+        templateResolver.setTemplateMode(TemplateMode.TEXT);
         templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
     }
 
-    private String getTemplatePath(){
-        return "/templates/";
-    }
-
-    public static TemplateEngine getTemplateEngine(){
+    public static TemplateEngine getTemplateEngine() {
         return INSTANCE.templateEngine;
     }
 }

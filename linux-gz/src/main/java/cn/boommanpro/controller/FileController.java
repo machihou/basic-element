@@ -2,6 +2,7 @@ package cn.boommanpro.controller;
 
 import cn.boommanpro.StringUtils;
 import cn.boommanpro.generator.TemplateGenerator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
 
+/**
+ * @author BoomManPro
+ */
+@Slf4j
 @Controller
 public class FileController {
 

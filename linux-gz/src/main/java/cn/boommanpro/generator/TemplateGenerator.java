@@ -6,6 +6,9 @@ import org.thymeleaf.context.Context;
 
 import java.io.InputStream;
 
+/**
+ * @author BoomManPro
+ */
 public class TemplateGenerator {
 
     private static final String JAR_FOLDER = "jar/";
@@ -29,7 +32,7 @@ public class TemplateGenerator {
 
 
 
-    public static InputStream generator(String projectName) throws Exception {
+    public static InputStream generator(String projectName) {
         GeneratorFile[] generatorFiles = new GeneratorFile[]{
                 GeneratorFile.of(getPackagingName(projectName,JAR_FOLDER)),
                 GeneratorFile.of(getPackagingName(projectName,LOGS_FOLDER)),
