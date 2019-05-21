@@ -5,7 +5,8 @@ import lombok.NonNull;
 import lombok.experimental.Accessors;
 
 /**
- * @author wangqimeng
+ * @author BoomManPro
+ * @mail boommanpro@gmail.com
  */
 @Data(staticConstructor = "of")
 @Accessors(chain = true)

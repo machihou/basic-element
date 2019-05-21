@@ -1,13 +1,14 @@
 package cn.boommanpro.generator;
 
-import cn.boommanpro.GzipUtil;
 import cn.boommanpro.generator.config.ThymeLeafConfig;
+import cn.boommanpro.util.GzipUtil;
 import org.thymeleaf.context.Context;
 
 import java.io.InputStream;
 
 /**
  * @author BoomManPro
+ * @mail boommanpro@gmail.com
  */
 public class TemplateGenerator {
 
@@ -28,10 +29,6 @@ public class TemplateGenerator {
      * <p>
      * 然后将所有文件进行压缩
      */
-
-
-
-
     public static InputStream generator(String projectName) {
         GeneratorFile[] generatorFiles = new GeneratorFile[]{
                 GeneratorFile.of(getPackagingName(projectName,JAR_FOLDER)),
@@ -45,15 +42,6 @@ public class TemplateGenerator {
 
     }
 
-    private static String getPackagingName(String projectName,String fileName){
-        return projectName + "/" + fileName;
-    }
-
-
-
-
-
-
     public static String doGenerator(String projectName, String fileName) {
         Context context = new Context();
         context.setVariable("projectName", projectName);
@@ -61,5 +49,10 @@ public class TemplateGenerator {
         context.setVariable("RIGHT_BRACKET", RIGHT_BRACKET);
         return ThymeLeafConfig.getTemplateEngine().process("config/" + fileName, context);
     }
+
+    private static String getPackagingName(String projectName,String fileName){
+        return projectName + "/" + fileName;
+    }
+
 
 }

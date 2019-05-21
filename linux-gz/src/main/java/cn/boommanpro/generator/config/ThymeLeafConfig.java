@@ -6,8 +6,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 /**
  * @author BoomManPro
- * @mail 592323211@qq.com
- * @description
+ * @mail boommanpro@gmail.com
  */
 public enum ThymeLeafConfig {
     /**
