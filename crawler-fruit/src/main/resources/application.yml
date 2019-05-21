@@ -1,0 +1,2 @@
+logging:
+  path: classpath:logback_one.xml

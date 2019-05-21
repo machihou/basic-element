@@ -8,14 +8,15 @@ import cn.boommanpro.ocr.ZiRoomPriceGrab;
 import cn.boommanpro.util.HttpQueryStringUtil;
 import cn.boommanpro.util.HttpUtil;
 import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-
-@RequestMapping("/ziRoom")
+@Slf4j
 @RestController
+@RequestMapping("/ziRoom")
 public class ZiRoomController {
 
     @RequestMapping("/search")

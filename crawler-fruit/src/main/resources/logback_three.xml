@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 根节点，设置为调试模式 自动重扫描配置文件 间隔为30秒 -->
+<configuration debug="false" scan="true" scanPeriod="30 seconds">
+
+    <!-- 定义常量 ，下面可以引用 -->
+    <property name="LOG_HOME" value="LOGS" /><!-- log目录 -->
+    <property name="BACKUP_HOME" value="${LOG_HOME}/backups" />
+    <property name="LOG_FILE_NAME" value="Test" />
+
+    <!-- 定义控制台输出 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 定义日志格式 -->
+        <encoder>
+            <pattern>%date %level [%thread]-[%logger{0}:%line] %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>
+                    <![CDATA[
+                         event.getThreadName().contains("code-Memory-server")
+                     ]]>
+                </expression>
+            </evaluator>
+            <OnMatch>DENY</OnMatch>
+            <OnMismatch>NEUTRAL</OnMismatch>
+        </filter>
+    </appender>
+
+    <!-- 定义指定文件名称的输出 此处设定的文件名称是动态设置的 即 每天生成一个文件 用于记录当天的文件信息 -->
+    <appender name="DAILY_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${LOG_FILE_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                ${BACKUP_HOME}/%d{yyyy-MM-dd}/${LOG_FILE_NAME}.%d{yyyyMMdd}.log
+            </FileNamePattern>
+            <MaxHistory>3</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread]-[%logger{0}:%line] %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>
+                    <![CDATA[
+                         event.getThreadName().contains("DefaultQuartzScheduler")
+                     ]]>
+                </expression>
+            </evaluator>
+            <OnMatch>DENY</OnMatch>
+            <OnMismatch>NEUTRAL</OnMismatch>
+        </filter>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>
+                    <![CDATA[
+                         event.getThreadName().contains("code-Memory-server")
+                     ]]>
+                </expression>
+            </evaluator>
+            <OnMatch>DENY</OnMatch>
+            <OnMismatch>NEUTRAL</OnMismatch>
+        </filter>
+    </appender>
+    <!-- 定义指定文件名称的输出 此处设定的文件名称是动态设置的 即 每天生成一个文件 用于记录当天的文件信息 -->
+    <appender name="DAILY_TASK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${LOG_FILE_NAME}_task.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                ${BACKUP_HOME}/%d{yyyy-MM-dd}/${LOG_FILE_NAME}_task.%d{yyyyMMdd}.log
+            </FileNamePattern>
+            <MaxHistory>3</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread]-[%logger{0}:%line] %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>
+                    <![CDATA[
+                         !event.getThreadName().contains("DefaultQuartzScheduler")
+                     ]]>
+                </expression>
+            </evaluator>
+            <OnMatch>DENY</OnMatch>
+            <OnMismatch>NEUTRAL</OnMismatch>
+        </filter>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>
+                    <![CDATA[
+                        event.getThreadName().contains("code-Memory-server")
+                     ]]>
+                </expression>
+            </evaluator>
+            <OnMatch>DENY</OnMatch>
+            <OnMismatch>NEUTRAL</OnMismatch>
+        </filter>
+    </appender>
+    <!-- 定义指定文件名称的输出 此处设定的文件名称是动态设置的 即 每天生成一个文件 用于记录当天的文件信息 -->
+    <appender name="ACTIVEMQ_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/RYZH.log</file>  <!-- 输出的地址和文件名 E:\\ACTIVEMQ.log -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BACKUP_HOME}/%d{yyyy-MM-dd}/RYZH.%d{yyyyMMdd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory> <!-- 记录近30天的日志 -->
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date %level [%thread]-[%logger{0}:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- additivity="false"不输出到上级路径 -->
+    <logger name="activeMQLog" level="INFO" additivity="false">
+        <appender-ref ref="ACTIVEMQ_LOG" />
+    </logger>
+    <!-- 安审日志插件记录器 -->
+    <logger name="jdbc.audit" level="WARN" />
+    <logger name="jdbc.resultset" level="WARN" />
+    <logger name="jdbc.sqlonly" level="WARN" />
+    <logger name="jdbc.sqltiming" level="INFO" />
+    <logger name="jdbc.connection" level="WARN" />
+    <logger name="log4jdbc.debug" level="WARN" />
+    <!-- spring和hibernate的日志 -->
+    <logger name="org.hibernate" level="ERROR" />
+    <logger name="org.springframework" level="ERROR" />
+    <!-- DIDS输出日志 -->
+    <logger name="edu.yale.its" level="WARN" />
+    <!-- 单独对指定的日志设定级别，使该日志对象输出地日志级别限定在：“INFO”级别，不受跟级别的限制 目标可以是类或者包 -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="DAILY_LOG" />
+        <appender-ref ref="DAILY_TASK" />
+    </root>
+</configuration>
