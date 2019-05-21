@@ -19,9 +19,9 @@ public class CallResult<T> implements Serializable {
 
     private T result;
 
-    private final static String SUCCESS_CODE="SUCCESS";
+    private static final  String SUCCESS_CODE="SUCCESS";
 
-    private final static String ERROR_CODE="ERROR";
+    private static final  String ERROR_CODE="ERROR";
 
 
     public CallResult(String code, String message, T result) {

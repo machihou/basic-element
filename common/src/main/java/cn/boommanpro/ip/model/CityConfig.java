@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
+/**
+ * @author BoomManPro
+ */
 @Data
 @Accessors(chain = true)
 @RequiredArgsConstructor(staticName = "of")
